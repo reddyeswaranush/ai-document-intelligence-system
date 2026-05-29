@@ -1,0 +1,10 @@
+streamlit
+easyocr
+opencv-python
+numpy
+pillow
+python-dotenv
+groq
+pymupdf
+pandas
+sqlalchemy
