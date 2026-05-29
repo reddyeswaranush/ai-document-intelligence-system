@@ -1,12 +1,31 @@
 import sqlite3
 import json
+import os
+
+
+# -----------------------------------------------------
+# Create database folder automatically
+# -----------------------------------------------------
+os.makedirs(
+    "database",
+    exist_ok=True
+)
+
+
+# -----------------------------------------------------
+# Database path
+# -----------------------------------------------------
+DB_PATH = os.path.join(
+    "database",
+    "documents.db"
+)
 
 
 # -----------------------------------------------------
 # Connect to SQLite database
 # -----------------------------------------------------
 conn = sqlite3.connect(
-    "database/documents.db",
+    DB_PATH,
     check_same_thread=False
 )
 
@@ -69,7 +88,6 @@ def get_all_documents():
 
     documents = []
 
-
     for row in rows:
 
         documents.append({
@@ -78,6 +96,5 @@ def get_all_documents():
 
             "data": json.loads(row[1])
         })
-
 
     return documents
